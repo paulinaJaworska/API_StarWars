@@ -1,0 +1,13 @@
+table,
+th,
+td {
+    border: solid cornflowerblue 1px;
+    padding: 0.2rem;
+}
+
+table {
+    background: white;
+    border-collapse: collapse;
+    width: 600px;
+    margin: auto;
+}
