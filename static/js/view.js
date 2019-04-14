@@ -1,7 +1,9 @@
-export {showPlanetsTable,
-        showModal,
-        showResidentsTable,
-        clearTableBody}
+export {
+    showPlanetsTable,
+    showModal,
+    showResidentsTable,
+    clearTableBody
+}
 
 let planetsData;
 
@@ -65,29 +67,34 @@ function formatSurfaceWaterPercentage(waterSurface) {
 let showResidentsTable = function (resident) {
     let output = ``;
     output += `<tr><td>${resident.name}</td>
-                       <td>${resident.height}</td>
-                       <td>${resident.mass}</td>
+                       <td>${formatHeight(resident.height)}</td>
+                       <td>${formatMass(resident.mass)}</td>
                        <td>${resident.hair_color}</td>
                        <td>${resident.skin_color}</td>
                        <td>${resident.eye_color}</td>
-                       <td>${resident.birth_year}</td>
-                       <td>${resident.gender}</td></tr>`;
+                       <td>${resident.birth_year}</td>`;
+    if (resident.gender === 'male') {
+        output += `<td><i class="fa fa-mars"></i></td></tr>`
+        } else {
+        output += `<td><i class="fa fa-venus"></i></td></tr>`
+        }
     let tableInModal = document.getElementById("body-content");
     tableInModal.insertAdjacentHTML('beforeend', output)
 };
 
-let clearTableBody = function() {
+let clearTableBody = function () {
     let tableInModal = document.getElementById("body-content");
     tableInModal.innerHTML = '';
 };
 
-function showModal (modal, planetNumber) {
-    // Show table header
+function showModal(modal, planetNumber) {
+// Show table header
     let modalTitle = planetsData[planetNumber].name;
     document.getElementById("myModalLabel").innerText = modalTitle;
 
-    // Get the <span> element that closes the modal
+// Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
+
 // When the user clicks on the button, open the modal
     modal.onclick = function () {
         modal.style.display = "block";
@@ -106,7 +113,21 @@ function showModal (modal, planetNumber) {
 
 // FORMAT DATA IN MODAL'S RESIDENTS TABLE
 
+function formatHeight(height) {
+    if (height !== 'unknown') {
+        return height.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' meters';
+    } else {
+        return 'unknown'
+    }
+}
 
+function formatMass(mass) {
+    if (mass !== 'unknown') {
+        return mass.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' kg';
+    } else {
+        return 'unknown'
+    }
+}
 
 /* Zrobić uniwersalną templatkę do każdej strony
 const student = {
