@@ -81,7 +81,11 @@ let clearTableBody = function() {
     tableInModal.innerHTML = '';
 };
 
-function showModal (modal) {
+function showModal (modal, planetNumber) {
+    // Show table header
+    let modalTitle = planetsData[planetNumber].name;
+    document.getElementById("myModalLabel").innerText = modalTitle;
+
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal

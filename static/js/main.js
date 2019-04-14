@@ -14,7 +14,7 @@ document.addEventListener('click', function (event) {
         let modal = document.getElementsByClassName("modalContent");
         let urlResidentsList = planetsData[planetNumber].residents;
         requestResidentDetails(urlResidentsList, showResidentsTable);
-        showModal(modal);
+        showModal(modal, planetNumber);
     }
 }, false);
 
