@@ -1,11 +1,9 @@
 import {requestPlanetsData, requestResidentsUrls, requestResidentDetails} from "./requests.js";
-import {showTable, residentsModalBody,
-    /*residentsDetailsButtons,*/
-    showModal} from "./view.js";
+import {showModal, showPlanetsTable, showResidentsTable} from "./view.js";
 
 export {planetNumber}
 
-requestPlanetsData(showTable);
+requestPlanetsData(showPlanetsTable);
 let planetNumber;
 
 // event bubbling

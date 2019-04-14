@@ -1,10 +1,10 @@
-import {planetNumber} from "./main.js";
+export {showPlanetsTable,
+        showModal,
+        showResidentsTable}
 
-export {showTable,showModal, residentsModalBody}
 
 
-
-let showTable = function (planets) {
+let showPlanetsTable = function (planets) {
     let output = ``;
 
     for (let i in planets) {
@@ -30,6 +30,27 @@ let showTable = function (planets) {
     let tableData = document.getElementById("planets");
     tableData.insertAdjacentHTML('beforeend', output);
 };
+
+
+let showResidentsTable = function (resident) {
+    console.log(resident);
+    let output = `<tr>`;
+    output += `<td>${resident.name}</td>
+                       <td>${resident.height}</td>
+                       <td>${resident.mass}</td>
+                       <td>${resident.hair_color}</td>
+                       <td>${resident.skin_color}</td>
+                       <td>${resident.eye_color}</td>
+                       <td>${resident.birth_year}</td>
+                       <td>${resident.gender}</td></tr>`;
+    let tableInModal = document.getElementById("table-content");
+    tableInModal.insertAdjacentHTML('beforeend', output)
+}
+
+
+
+
+
 
 function formatPopulation(population) {
     if (population !== 'unknown') {

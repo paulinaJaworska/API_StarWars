@@ -1,3 +1,5 @@
+import {showResidentsTable} from "./view.js";
+
 export {
     requestPlanetsData,
     requestResidentsUrls,
@@ -32,7 +34,7 @@ let requestResidentsUrls = function (planetId, callback) {
             let residentsUrlList = planetData['residents'];
             //let output = `<tbody>`;
             for (let urlItem of residentsUrlList) {
-                callback(urlItem)
+                callback(urlItem, showResidentsTable)  // model connects directly to view
             }
         } else if (this.status === 404) {
             document.getElementById("modal-content").innerHTML = "Not found";
@@ -42,23 +44,13 @@ let requestResidentsUrls = function (planetId, callback) {
 };
 
 
-function requestResidentDetails(requesUrl) {
+function requestResidentDetails(requesUrl, callback) {
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", `${requesUrl}`, true);
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let person = JSON.parse(this.responseText);
-            let output = `<tr>`;
-            output += `<td>${person.name}</td>
-                       <td>${person.height}</td>
-                       <td>${person.mass}</td>
-                       <td>${person.hair_color}</td>
-                       <td>${person.skin_color}</td>
-                       <td>${person.eye_color}</td>
-                       <td>${person.birth_year}</td>
-                       <td>${person.gender}</td></tr>`;
-            let tableInModal = document.getElementById("table-content")
-            tableInModal.insertAdjacentHTML('beforeend', output)
+            let resident = JSON.parse(this.responseText);
+            callback(resident);
         } else if (this.status === 404) {
             document.getElementById("table-content").innerHTML = "Not found"
         }
