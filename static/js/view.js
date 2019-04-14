@@ -1,12 +1,13 @@
 export {showPlanetsTable,
         showModal,
-        showResidentsTable}
+        showResidentsTable,
+        clearTableBody}
 
-
+let planetsData;
 
 let showPlanetsTable = function (planets) {
     let output = ``;
-
+    planetsData = planets;
     for (let i in planets) {
         output += `<tr><td>${planets[i].name}</td>
                             <td>${formatDiameter(planets[i].diameter)}</td>
@@ -33,9 +34,8 @@ let showPlanetsTable = function (planets) {
 
 
 let showResidentsTable = function (resident) {
-    console.log(resident);
-    let output = `<tr>`;
-    output += `<td>${resident.name}</td>
+    let output = ``;
+    output += `<tr><td>${resident.name}</td>
                        <td>${resident.height}</td>
                        <td>${resident.mass}</td>
                        <td>${resident.hair_color}</td>
@@ -43,10 +43,15 @@ let showResidentsTable = function (resident) {
                        <td>${resident.eye_color}</td>
                        <td>${resident.birth_year}</td>
                        <td>${resident.gender}</td></tr>`;
-    let tableInModal = document.getElementById("table-content");
+    let tableInModal = document.getElementById("body-content");
     tableInModal.insertAdjacentHTML('beforeend', output)
-}
+};
 
+
+let clearTableBody = function() {
+    let tableInModal = document.getElementById("body-content");
+    tableInModal.innerHTML = '';
+};
 
 
 
@@ -86,28 +91,39 @@ let residentsDetailsButtons = document.getElementsByClassName("residents");
 
 
 
-let modal = document.querySelector('.modal');
+//let modal = document.querySelector('.modal');
+let content = document.getElementsByTagName("tableContent");
+//let content = document.getElementById("table-content");
+console.log(content);
 
-let residentsModalBody = document.getElementsByClassName('residents');
-
-function showModal () {
+function showModal (modal) {
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
     modal.onclick = function () {
         modal.style.display = "block";
+        content.removeChild('tr');
+        modal.insertAdjacentHTML = "";
+        content.insertAdjacentHTML = "";
+
     };
 
 // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
+        content.removeChild('tr');
+        modal.insertAdjacentHTML = "";
+        content.insertAdjacentHTML = "";
     };
 
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
+            //content.removeChild('tr');
+            modal.insertAdjacentHTML = "";
+            content.insertAdjacentHTML = "";
         }
     }
 }

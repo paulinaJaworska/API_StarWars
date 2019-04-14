@@ -1,5 +1,5 @@
-import {requestPlanetsData, requestResidentsUrls, requestResidentDetails} from "./requests.js";
-import {showModal, showPlanetsTable, showResidentsTable} from "./view.js";
+import {requestPlanetsData, requestResidentDetails, planetsData} from "./requests.js";
+import {showModal, showPlanetsTable, showResidentsTable, clearTableBody} from "./view.js";
 
 export {planetNumber}
 
@@ -9,10 +9,12 @@ let planetNumber;
 // event bubbling
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('residents')) {  // always true
-        const firstPlanet = 1;
-        planetNumber = Number(event.target.dataset.planetId) + firstPlanet;
-        requestResidentsUrls(planetNumber, requestResidentDetails);
-        showModal();
+        clearTableBody();
+        planetNumber = Number(event.target.dataset.planetId);
+        let modal = document.getElementsByClassName("modalContent");
+        let urlResidentsList = planetsData[planetNumber].residents;
+        requestResidentDetails(urlResidentsList, showResidentsTable);
+        showModal(modal);
     }
 }, false);
 
