@@ -5,6 +5,8 @@ export {showPlanetsTable,
 
 let planetsData;
 
+// PLANETS TABLE
+
 let showPlanetsTable = function (planets) {
     let output = ``;
     planetsData = planets;
@@ -32,30 +34,7 @@ let showPlanetsTable = function (planets) {
     tableData.insertAdjacentHTML('beforeend', output);
 };
 
-
-let showResidentsTable = function (resident) {
-    let output = ``;
-    output += `<tr><td>${resident.name}</td>
-                       <td>${resident.height}</td>
-                       <td>${resident.mass}</td>
-                       <td>${resident.hair_color}</td>
-                       <td>${resident.skin_color}</td>
-                       <td>${resident.eye_color}</td>
-                       <td>${resident.birth_year}</td>
-                       <td>${resident.gender}</td></tr>`;
-    let tableInModal = document.getElementById("body-content");
-    tableInModal.insertAdjacentHTML('beforeend', output)
-};
-
-
-let clearTableBody = function() {
-    let tableInModal = document.getElementById("body-content");
-    tableInModal.innerHTML = '';
-};
-
-
-
-
+// FORMAT PLANETS TABLE
 
 function formatPopulation(population) {
     if (population !== 'unknown') {
@@ -81,53 +60,47 @@ function formatSurfaceWaterPercentage(waterSurface) {
     }
 }
 
-/*Instead I would create the <button> directly with createElement() and then add it to DOM
-with appendChild(), or I would use a DocumentFragment or a <template> in order to avoid querySelector()
-on all of the blogDiv.*/
-/*
-let modal = document.getElementById("residentsModal");
-let residentsDetailsButtons = document.getElementsByClassName("residents");
-*/
+// MODAL CONTENT
 
+let showResidentsTable = function (resident) {
+    let output = ``;
+    output += `<tr><td>${resident.name}</td>
+                       <td>${resident.height}</td>
+                       <td>${resident.mass}</td>
+                       <td>${resident.hair_color}</td>
+                       <td>${resident.skin_color}</td>
+                       <td>${resident.eye_color}</td>
+                       <td>${resident.birth_year}</td>
+                       <td>${resident.gender}</td></tr>`;
+    let tableInModal = document.getElementById("body-content");
+    tableInModal.insertAdjacentHTML('beforeend', output)
+};
 
-
-//let modal = document.querySelector('.modal');
-let content = document.getElementsByTagName("tableContent");
-//let content = document.getElementById("table-content");
-console.log(content);
+let clearTableBody = function() {
+    let tableInModal = document.getElementById("body-content");
+    tableInModal.innerHTML = '';
+};
 
 function showModal (modal) {
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on the button, open the modal
     modal.onclick = function () {
         modal.style.display = "block";
-        content.removeChild('tr');
-        modal.insertAdjacentHTML = "";
-        content.insertAdjacentHTML = "";
-
     };
-
 // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
-        content.removeChild('tr');
-        modal.insertAdjacentHTML = "";
-        content.insertAdjacentHTML = "";
     };
-
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
-            //content.removeChild('tr');
-            modal.insertAdjacentHTML = "";
-            content.insertAdjacentHTML = "";
         }
     }
 }
 
+// FORMAT DATA IN MODAL'S RESIDENTS TABLE
 
 
 
@@ -144,22 +117,3 @@ const studentTemplate = templater`<article>
 </article>`;
 
 const myTemplate = studentTemplate(student);*/
-
-
-/* '<tr><th>Name</th><th>Diameter</th><th>Climate</th><th>Terrain</th><th>Surface Water Percentage</th><th>Population</th><th>Residents</th></tr>';
-            for (let i in planets) {
-                output += '<tr><td>' + planets[i].name +
-                    '</td><td>' + formatDiamter(planets[i].diameter) +
-                    '</td><td>' + planets[i].climate + '</td><td>' +
-                    planets[i].terrain + '</td><td>' +
-                    formatSurfaceWaterPercentage(planets[i].surface_water) + '</td class="population"><td>' +
-                    formatPopulation(planets[i].population) +
-                    '</td><td>';
-                if (planets[i].residents.length === 0) {
-                    output += 'No known residents'
-                } else {
-                    let residentsNumber = String(planets[i].residents.length);
-                    output += `<button id="btn-residents" class="btn btn-info">${residentsNumber} residents(s)</button>`
-                }
-                output += '</td>'
-            } */
