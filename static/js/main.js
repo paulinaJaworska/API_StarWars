@@ -3,8 +3,7 @@ import {showModal, showPlanetsTable, showResidentsTable, clearTableBody} from ".
 import {pagination} from "./pagination.js";
 
 
-requestPlanetsData(showPlanetsTable);
-pagination.buttonStatusCheck();
+requestPlanetsData(showPlanetsTable, pagination.buttonStatusCheck)
 
 // event bubbling
 document.addEventListener('click', function (event) {

@@ -134,10 +134,11 @@ function formatMass(mass) {
 
 function toggleButtonState(className, active) {
     let btn = document.getElementsByClassName(className);
+    let firstElementOfCollection = 0;
     if (active === true) {
-        btn.removeAttribute("disabled");
+        btn[firstElementOfCollection].removeAttribute("disabled");
     } else {
-        btn.setAttribute("disabled");
+        btn[firstElementOfCollection].setAttribute("disabled", "");
     }
 
 }
