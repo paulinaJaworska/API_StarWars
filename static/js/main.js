@@ -26,7 +26,7 @@ document.addEventListener('click', function (event) {
         // zapisać do bazy
 
     } else if (event.target.classList.contains('previous-page-content')) {
-        clearTableBody("planet-table-content");
+        clearTableBody("planets-table-content");
         pagination.showPreviousPage();
 
     } else if (event.target.classList.contains('next-page-content')) {

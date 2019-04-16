@@ -85,7 +85,6 @@ let showResidentsTable = function (resident) {
 
 let clearTableBody = function (elementId) {
     let table = document.getElementById(elementId);
-    console.log(table);
     table.innerHTML = '';
 };
 
