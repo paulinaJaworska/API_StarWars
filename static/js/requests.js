@@ -1,18 +1,20 @@
-export {
-    requestPlanetsData,
+export {requestPlanetsData,
     requestResidentDetails,
-    planetsData
-}
+    planetsData,
+    nextPageUrl,
+    previousPageUrl}
 // variable to store data about the planets and url list for residents later
 let planetsData;
+let planetsDataWithDetails;
 
-let requestPlanetsData = function (callback) {
+let requestPlanetsData = function (callback, urlPage="https://swapi.co/api/planets/") {
     let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://swapi.co/api/planets/", true);
+    xhttp.open("GET", urlPage , true);
     xhttp.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
             let data = JSON.parse(this.responseText);
+            planetsDataWithDetails = data;
             let planets = data.results;
             callback(planets);
 
@@ -41,3 +43,10 @@ function requestResidentDetails(requestUrls, callback) {
     }
 }
 
+let nextPageUrl = function () {
+    return planetsDataWithDetails.next
+};
+
+let previousPageUrl = function () {
+    return planetsDataWithDetails.previous
+};

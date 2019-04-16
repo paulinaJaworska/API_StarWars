@@ -1,8 +1,8 @@
-export {
-    showPlanetsTable,
+export {showPlanetsTable,
     showModal,
     showResidentsTable,
-    clearTableBody
+    clearTableBody,
+    toggleButtonState,
 }
 
 let planetsData;
@@ -27,12 +27,12 @@ let showPlanetsTable = function (planets) {
             let residentsNumber = String(planets[i].residents.length);
             //output += `<button class="btn btn-info residents" data-planet-id = "${i}">${residentsNumber} residents(s)</button>`
             output += `<button id="myModalTrigger" class="btn btn-info residents" type="button" data-toggle="modal" data-target="#myModal" data-planet-id="${i}">${residentsNumber} residents(s)</button>`
-
-
         }
-        output += `</td>`
+        output += `</td><td>
+                    <button class="btn btn-info vote"  type="button" data-planet-id="${i}" aria-pressed="true">Vote</button>
+                    </td></tr>`
     }
-    let tableData = document.getElementById("planets");
+    let tableData = document.getElementById("planets-table-content");
     tableData.insertAdjacentHTML('beforeend', output);
 };
 
@@ -78,13 +78,15 @@ let showResidentsTable = function (resident) {
         } else {
         output += `<td><i class="fa fa-venus"></i></td></tr>`
         }
-    let tableInModal = document.getElementById("body-content");
+
+    let tableInModal = document.getElementById("residents-table-content");
     tableInModal.insertAdjacentHTML('beforeend', output)
 };
 
-let clearTableBody = function () {
-    let tableInModal = document.getElementById("body-content");
-    tableInModal.innerHTML = '';
+let clearTableBody = function (elementId) {
+    let table = document.getElementById(elementId);
+    console.log(table);
+    table.innerHTML = '';
 };
 
 function showModal(modal, planetNumber) {
@@ -128,6 +130,19 @@ function formatMass(mass) {
         return 'unknown'
     }
 }
+
+// PAGINATION BUTTONS
+
+function toggleButtonState(className, active) {
+    let btn = document.getElementsByClassName(className);
+    if (active === true) {
+        btn.removeAttribute("disabled");
+    } else {
+        btn.setAttribute("disabled");
+    }
+
+}
+
 
 /* Zrobić uniwersalną templatkę do każdej strony
 const student = {

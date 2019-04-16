@@ -18,16 +18,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Planet list<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Voting Statistics<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Registration<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Login<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="#">Logout<span class="sr-only">(current)</span></a>
             </div>
         </div>
-    </nav><br><br>
-
-
+    </nav>
+    <h1>Star Wars universe planets</h1>
+    <br>
 
         <div class="btn-toolbar">
-            <a href="#" class="btn btn-primary btn-lg mx-2 disabled" tabindex="-1" role="button" aria-disabled="true">Previous</a>
-            <a href="#" class="btn btn-secondary btn-lg mx-2 disabled" tabindex="-1" role="button" aria-disabled="true">Next</a>
+                <button class="btn btn-primary btn-lg mx-2 previous-page-content" role="button">Previous</button>   <!-- aria-disabled="true" -->
+                <button class="btn btn-primary btn-lg mx-2 next-page-content" role="button">Next</button>
         </div>
     <br><br>
 
@@ -41,8 +45,10 @@
                 <th>Surface Water Percentage</th>
                 <th>Population</th>
                 <th>Residents</th>
+                <th></th>
             </tr>
         </thead>
+        <tbody id="planets-table-content"></tbody>
     </table>
 
     <div id="myModal" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,7 +72,7 @@
                         <th>gender</th>
                     </tr>
                     </thead>
-                    <tbody id="body-content"></tbody>
+                    <tbody id="residents-table-content"></tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
