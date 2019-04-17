@@ -1,7 +1,7 @@
 export {showPlanetsTable,
-    showModal,
+    showResidentsModal,
     showResidentsTable,
-    clearTableBody,
+    clearElementContent,
     toggleButtonState,
     showVotingTable,
     showStatsModal,
@@ -64,8 +64,14 @@ function formatSurfaceWaterPercentage(waterSurface) {
     }
 }
 
-// RESIDENTS MODAL
+// CLEAR CONTENT
+let clearElementContent = function (elementId) {
+    let table = document.getElementById(elementId);
+    table.innerHTML = '';
+};
 
+
+// RESIDENTS MODAL
 let showResidentsTable = function (resident) {
     let output = ``;
     output += `<tr><td>${resident.name}</td>
@@ -85,12 +91,7 @@ let showResidentsTable = function (resident) {
     tableInModal.insertAdjacentHTML('beforeend', output)
 };
 
-let clearTableBody = function (elementId) {
-    let table = document.getElementById(elementId);
-    table.innerHTML = '';
-};
-
-function showModal(modal, planetNumber) {
+function showResidentsModal(modal, planetNumber) {
 // Show table header
     let modalTitle = planetsData[planetNumber].name;
     document.getElementById("myModalLabel").innerText = modalTitle;
@@ -147,7 +148,6 @@ function toggleButtonState(className, active) {
 // VOTING STATS MODAL
 
 let showVotingTable = function () {
-    console.log("tu show table");
     let output = ``;
     output += `<tr><td>name</td>
               <td>vote</td></tr>`;
@@ -155,14 +155,54 @@ let showVotingTable = function () {
     tableBody.insertAdjacentHTML('beforeend', output)
 };
 
-/*let clearTableBody = function (elementId) {
-    let table = document.getElementById(elementId);
-    table.innerHTML = '';
-};*/
-
 function showStatsModal() {
-    console.log("Tu show modal");
-    let modal = document.getElementsByClassName("votes-modal-content");
+    let modal = document.getElementsByClassName("modal");
+
+// Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+    modal.onclick = function () {
+        modal.style.display = "block";
+    };
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+// SHOW REGISTER/LOGIN MODAL
+
+function showRegisterModal() {
+    let modal = document.getElementsByClassName("modal");
+
+// Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+    modal.onclick = function () {
+        modal.style.display = "block";
+    };
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+function showLoginModal() {
+    let modal = document.getElementsByClassName("modal");
 
 // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];

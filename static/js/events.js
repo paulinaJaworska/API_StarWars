@@ -1,5 +1,5 @@
 import {requestPlanetsData, requestResidentDetails, planetsData} from "./requests.js";
-import {showModal, showPlanetsTable, showResidentsTable, clearTableBody, showVotingTable, showStatsModal} from "./view.js";
+import {showResidentsModal, showPlanetsTable, showResidentsTable, clearElementContent, showVotingTable, showStatsModal} from "./view.js";
 import {pagination} from "./pagination.js";
 
 
@@ -8,12 +8,12 @@ requestPlanetsData(showPlanetsTable, pagination.buttonStatusCheck)
 // event bubbling
 document.addEventListener('click', function (event) {
     if (event.target.classList.contains('residents')) {  // always true
-        clearTableBody("residents-table-content");
+        clearElementContent("residents-table-content");
         let planetNumber = Number(event.target.dataset.planetId);
         let modal = document.getElementsByClassName("modalContent");
         let urlResidentsList = planetsData[planetNumber].residents;
         requestResidentDetails(urlResidentsList, showResidentsTable);
-        showModal(modal, planetNumber);
+        showResidentsModal(modal, planetNumber);
         
     } else if (event.target.classList.contains('vote')) {
         let planetNumber = Number(event.target.dataset.planetId);
@@ -25,15 +25,16 @@ document.addEventListener('click', function (event) {
         // zapisać do bazy
 
     } else if (event.target.classList.contains('previous-page-content')) {
-        clearTableBody("planets-table-content");
+        clearElementContent("planets-table-content");
         pagination.showPreviousPage();
 
     } else if (event.target.classList.contains('next-page-content')) {
-        clearTableBody("planets-table-content");
+        clearElementContent("planets-table-content");
         pagination.showNextPage();
     } else if (event.target.classList.contains("voting-stats-btn")) {
+        clearElementContent("votes-table-content");
         showStatsModal();
-        showVotingTable();
+        showVotingTable(); // wywołanie przez request
     } else if (event.target.classList.contains("registration-btn")) {
 
     } else if (event.target.classList.contains("login-btn")) {
