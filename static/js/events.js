@@ -1,9 +1,10 @@
 import {requestPlanetsData, requestResidentDetails, planetsData} from "./requests.js";
-import {showResidentsModal, showPlanetsTable, showResidentsTable, clearElementContent, showVotingTable, showStatsModal} from "./view.js";
+import {showResidentsModal, showPlanetsTable, showResidentsTable, clearElementContent,
+    showVotingTable, showStatsModal, handleNavigationBar} from "./view.js";
 import {pagination} from "./pagination.js";
 
 
-requestPlanetsData(showPlanetsTable, pagination.buttonStatusCheck)
+requestPlanetsData(showPlanetsTable, pagination.buttonStatusCheck);
 
 // event bubbling
 document.addEventListener('click', function (event) {
@@ -19,10 +20,9 @@ document.addEventListener('click', function (event) {
         let planetNumber = Number(event.target.dataset.planetId);
         let voteBtn = event.target.classList.contains('vote');
         voteBtn.setAttribute("disabled", true);
-        let planetName = getPlanetNameById(planetNumber);  // napisać, stowrzyć bazę jak się komunikować z nią
-        let planetVotes; // wyciągnąć z bazy
-        //zwiększyć o 1
-        // zapisać do bazy
+        let planetName = getPlanetNameById(planetNumber);
+        let planetVotes; // get from database
+        // handle planetVotes
 
     } else if (event.target.classList.contains('previous-page-content')) {
         clearElementContent("planets-table-content");
@@ -36,11 +36,8 @@ document.addEventListener('click', function (event) {
         showStatsModal();
         showVotingTable(); // wywołanie przez request
     } else if (event.target.classList.contains("registration-btn")) {
-
     } else if (event.target.classList.contains("login-btn")) {
-
     } else if (event.target.classList.contains("logout-btn")) {
-
     }
 }, false);
 

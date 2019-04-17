@@ -5,6 +5,7 @@ export {showPlanetsTable,
     toggleButtonState,
     showVotingTable,
     showStatsModal,
+    handleNavigationBar
 }
 
 let planetsData;

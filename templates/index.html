@@ -17,14 +17,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div id="navbar" class="navbar-nav">
                 <button class="btn btn-light"><a class="nav-item nav-link active" href="#">Planet list<span class="sr-only">(current)</span></a></button>
                 <button type="button" class="btn btn-light voting-stats-btn" data-toggle="modal" data-target="#stats">Voting Statistics<span class="sr-only">(current)</span></button>
-                <button type="button" class="btn btn-light registration-btn" data-toggle="modal" data-target="#registration">Registration<span class="sr-only">(current)</span></button>
-                <button type="button" class="btn btn-light login-btn" data-toggle="modal" data-target="#login">Login<span class="sr-only">(current)</span></button>
-                <button type="button" class="btn btn-light logout-btn">Logout<span class="sr-only">(current)</span></button>
+                <button id="register-btn" type="button" class="btn btn-light registration-btn" data-toggle="modal" data-target="#registration">Registration<span class="sr-only">(current)</span></button>
+                <button id="login-btn" type="button" class="btn btn-light login-btn" data-toggle="modal" data-target="#login">Login<span class="sr-only">(current)</span></button>
+                <button id="logout-btn" type="button" class="btn btn-light logout-btn">Logout<span class="sr-only">(current)</span></button>
             </div>
         </div>
+        <span id="navbar-username" class="navbar-text text-right"></span>
     </nav>
     <h1>Star Wars universe planets</h1>
     <br>
