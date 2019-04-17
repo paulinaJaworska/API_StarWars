@@ -1,6 +1,0 @@
-DROP TABLE IF EXISTS votes;
-
-CREATE TABLE votes (
-                       id SERIAL PRIMARY KEY,
-                       planet character varying(255) NOT NULL,
-                       votes character varying(255) NOT NULL);

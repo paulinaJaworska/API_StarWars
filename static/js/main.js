@@ -34,18 +34,3 @@ document.addEventListener('click', function (event) {
     }
 }, false);
 
-
-/*
-let residentsDetailsButtons = document.getElementsByClassName("residents");
-
-    for (let residentsButton in residentsDetailsButtons) {
-        residentsButton.addEventListener('click', function () {console.log("clicked")});
-    }
-*/
-
-/*residentsDetailsButtons.prototype.forEach(residentsButton => residentsButton.addEventListener('click',
-    function () {console.log("clicked")}));*/
-/*requestResidents(planetNumber, showModal(planetNUmber))));
-*/
-
-
