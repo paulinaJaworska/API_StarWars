@@ -1,5 +1,5 @@
 import {requestPlanetsData, requestResidentDetails, planetsData} from "./requests.js";
-import {showModal, showPlanetsTable, showResidentsTable, clearTableBody} from "./view.js";
+import {showModal, showPlanetsTable, showResidentsTable, clearTableBody, showVotingTable, showStatsModal} from "./view.js";
 import {pagination} from "./pagination.js";
 
 
@@ -31,6 +31,15 @@ document.addEventListener('click', function (event) {
     } else if (event.target.classList.contains('next-page-content')) {
         clearTableBody("planets-table-content");
         pagination.showNextPage();
+    } else if (event.target.classList.contains("voting-stats-btn")) {
+        showStatsModal();
+        showVotingTable();
+    } else if (event.target.classList.contains("registration-btn")) {
+
+    } else if (event.target.classList.contains("login-btn")) {
+
+    } else if (event.target.classList.contains("logout-btn")) {
+
     }
 }, false);
 

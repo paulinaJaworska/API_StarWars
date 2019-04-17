@@ -1,19 +1,25 @@
-<div id="stats" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
-            <div id="votes-modal" class="modal-body">
-                <table class="table table-bordered table-hover table-condensed votes-table">
+            <div class="modal-body">
+                <table id="table-content" class="table table-bordered table-hover table-condensed residents">
                     <thead>
                     <tr>
-                        <th>Planet name</th>
-                        <th>Received votes</th>
+                        <th>name</th>
+                        <th>height</th>
+                        <th>mass</th>
+                        <th>skin color</th>
+                        <th>hair color</th>
+                        <th>eye color</th>
+                        <th>birth year</th>
+                        <th>gender</th>
                     </tr>
                     </thead>
-                    <tbody id="votes-table-content"></tbody>
+                    <tbody id="residents-table-content"></tbody>
                 </table>
             </div>
             <div class="modal-footer">

@@ -3,6 +3,8 @@ export {showPlanetsTable,
     showResidentsTable,
     clearTableBody,
     toggleButtonState,
+    showVotingTable,
+    showStatsModal,
 }
 
 let planetsData;
@@ -62,7 +64,7 @@ function formatSurfaceWaterPercentage(waterSurface) {
     }
 }
 
-// MODAL CONTENT
+// RESIDENTS MODAL
 
 let showResidentsTable = function (resident) {
     let output = ``;
@@ -140,20 +142,43 @@ function toggleButtonState(className, active) {
     } else {
         btn[firstElementOfCollection].setAttribute("disabled", "");
     }
-
 }
 
+// VOTING STATS MODAL
 
-/* Zrobić uniwersalną templatkę do każdej strony
-const student = {
-    name: "Ryan Christiani",
-    blogUrl: "http://ryanchristiani.com"
+let showVotingTable = function () {
+    console.log("tu show table");
+    let output = ``;
+    output += `<tr><td>name</td>
+              <td>vote</td></tr>`;
+    let tableBody = document.getElementById("votes-table-content");
+    tableBody.insertAdjacentHTML('beforeend', output)
+};
+
+/*let clearTableBody = function (elementId) {
+    let table = document.getElementById(elementId);
+    table.innerHTML = '';
+};*/
+
+function showStatsModal() {
+    console.log("Tu show modal");
+    let modal = document.getElementsByClassName("votes-modal-content");
+
+// Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+    modal.onclick = function () {
+        modal.style.display = "block";
+    };
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
 }
-
-const studentTemplate = templater`<article>
-    <h3>${'name'} is a student at HackerYou</h3>
-    <p>You can find their work at ${'blogUrl'}.</p>
-
-</article>`;
-
-const myTemplate = studentTemplate(student);*/
