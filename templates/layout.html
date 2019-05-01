@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Api_wars</title>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Apiwars</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">API wars</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div id="navbar" class="navbar-nav">
+                <button class="btn btn-light"><a class="nav-item nav-link active" href="#">Planet list<span class="sr-only">(current)</span></a></button>
+                <button type="button" class="btn btn-light voting-stats-btn" data-toggle="modal" data-target="#stats">Voting Statistics<span class="sr-only">(current)</span></button>
+                <!--<button id="register-btn" type="button" class="btn btn-light registration-btn" data-toggle="modal" data-target="#registration">Registration<span class="sr-only">(current)</span></button>
+                <button id="login-btn" type="button" class="btn btn-light login-btn" data-toggle="modal" data-target="#login">Login<span class="sr-only">(current)</span></button>
+                <button id="logout-btn" type="button" class="btn btn-light logout-btn">Logout<span class="sr-only">(current)</span></button>-->
+            </div>
+        </div>
+        <span id="navbar-username" class="navbar-text text-right"></span>
+    </nav>
+
+    {% include 'planets.html' %}
+    {% include 'residents_modal.html' %}
+    {% include 'voting_stats_modal.html' %}
+    {% include 'registration_modal.html' %}
+    {% include 'login_modal.html' %}
+
+</body>
+</html>
