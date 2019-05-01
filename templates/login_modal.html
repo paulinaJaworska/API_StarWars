@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div id="loginModal" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="background-image: url('https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2017/05/night-sky.jpeg')">
+            <div class="modal-header">
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="login_form">
+                <form id="login-form" role="form">
+                    <div class="container">
+                        <h1 class="text-white">Log in</h1>
+                        <p class="text-white">Please fill in this form to create log into your account.</p>
+                        <hr>
+                        <div class="form-group">
+                            <input id="username" type="text" class="form-control" placeholder="Username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="password" type="password" class="form-control text-white" placeholder="Password" name="psw" required>
+                        </div>
+                        <hr>
 
-</body>
-</html>
+                        <button type="submit" class="btn btn-primary register-btn">Log in</button>
+                    </div>
+
+                    <div class="container signin">
+                        <p class="text-white">Not yet have an account <a href="#">Sign up</a>.</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default close text-white" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
