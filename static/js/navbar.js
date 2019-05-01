@@ -1,10 +1,4 @@
-/*function clearElement(id) {
-    const element = document.getElementById(id);
-    while (element.firstChild) {
-        element.removeChild(element.firstChild)
-    }
-}*/
-
+export {displayNavbar}
 
 // navbar elements
 
