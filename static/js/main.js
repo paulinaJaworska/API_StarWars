@@ -4,4 +4,4 @@ function main() {
     displayNavbar();
 }
 
-main()
+main();
