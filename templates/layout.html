@@ -31,7 +31,9 @@
         <span id="navbar-username" class="navbar-text text-right"></span>
     </nav>
 
-    {% include 'planets.html' %}
+    {% block content %}
+    {% endblock %}
+
     {% include 'residents_modal.html' %}
     {% include 'voting_stats_modal.html' %}
     {% include 'registration_modal.html' %}

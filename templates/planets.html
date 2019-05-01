@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout.html" %}
 
-</body>
-</html>
+{% block content %}
+
+<h1>Star Wars universe planets</h1>
+<br>
+
+<div class="btn-toolbar">
+    <button class="btn btn-primary btn-lg mx-2 previous-page-content" role="button">Previous</button>   <!-- aria-disabled="true" -->
+    <button class="btn btn-primary btn-lg mx-2 next-page-content" role="button">Next</button>
+</div>
+<br><br>
+
+<table id="planets" class="table table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Diameter</th>
+        <th>Climate</th>
+        <th>Terrain</th>
+        <th>Surface Water Percentage</th>
+        <th>Population</th>
+        <th>Residents</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="planets-table-content"></tbody>
+</table>
+
+{% endblock %}
