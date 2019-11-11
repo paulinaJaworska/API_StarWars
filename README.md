@@ -9,7 +9,7 @@ Web application which shows data about the Star Wars Universe, store visitors pr
 * HTML + CSS
 * AJAX request (fetch)
 * PostgreSQL
-* DOM
+* JavaScript DOM
 
 ![alt text](static/design/main-page.png)
 
