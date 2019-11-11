@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Apiwars</title>
+    <!-- icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav" id="nav-bar">
+            <li class="nav-item hvr-underline-from-center">
+                <a class="nav-link" href="/">Planet list</a>
+            </li>
+            <li class="nav-item hvr-underline-from-center" id="vote-statistic">
+                <a class="nav-link">Voting statistic</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-modal-container hidden" id="small-modal"></div>
+
+
+<br><br>
+<h1>Star Wars universe planets</h1>
+<br>
+
+<div class="btn-toolbar">
+    <button class="btn btn-lg mx-2 previous-page-content" role="button">Previous</button>
+    <!-- aria-disabled="true" -->
+    <button class="btn btn-lg mx-2 next-page-content" role="button">Next</button>
+</div>
+<br><br>
+
+<table class="table table-bordered table-hover table-condensed" id="planets">
+    <thead>
+    <tr class="tr-row">
+        <th>Name</th>
+        <th>Diameter</th>
+        <th>Climate</th>
+        <th>Terrain</th>
+        <th>Surface Water Percentage</th>
+        <th>Population</th>
+        <th>Residents</th>
+        <th>Vote</th>
+        <th>Test</th>
+    </tr>
+    </thead>
+    <tbody id="planets-table-content"></tbody>
+</table>
+
+{% include 'residents.html' %}
+{% include 'login.html' %}
+{% include 'registration.html' %}
+{% include 'voting_stats.html' %}
+
+<script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script defer src="{{ url_for('static', filename='js/events.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/requests.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/view.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/user.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/vote.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/navbar.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/main.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/dom_handler.js') }}" type="module"></script>
+<script defer src="{{ url_for('static', filename='js/api_ajax.js') }}" type="module"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+{% if error %}
+<h1>Error {{ error }}. {{ error_message }}</h1>
+<a href="/"><h2>RETURN TO HOMEPAGE</h2></a>
+{% else %}
+<h1>Page currently not available.</h1>
+{% endif %}
+
+{% endblock %}

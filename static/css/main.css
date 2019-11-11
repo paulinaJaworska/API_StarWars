@@ -1,0 +1,90 @@
+body {
+    background-image: url('https://d31029zd06w0t6.cloudfront.net/wp-content/uploads/sites/38/2017/05/night-sky.jpeg');
+    background-color: black;
+}
+
+h1 {
+    color: yellow;
+}
+
+.navbar {
+    font-size: x-large;
+    background-color: rgba(100%, 100%, 0%, .6);
+}
+
+table,
+th,
+td {
+    border: solid cornflowerblue 1px;
+    padding: 0.2rem;
+    color: yellow;
+}
+
+table {
+
+    background: black;
+    border-collapse: collapse;
+    width: 600px;
+    margin: auto;
+
+}
+
+i {
+    font-size: 24px;
+    color:yellow;
+}
+
+/* previous-next buttons*/
+.previous-page-content {
+    background-color: red;
+    border-color: red;
+    color: white;
+    -webkit-animation: glowr 1s ease-in-out infinite alternate;
+    -moz-animation: glowr 1s ease-in-out infinite alternate;
+    margin-right: 10em;
+}
+
+.previous-page-content:disabled {
+    background-color: red;
+    border-color: red;
+    color: white;
+    margin-right: 10em;
+}
+
+.next-page-content {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    color: white;
+    -webkit-animation: glowb 1s ease-in-out infinite alternate;
+    -moz-animation: glowb 1s ease-in-out infinite alternate;
+}
+
+.next-page-content:disabled {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    color: white;
+}
+
+@-webkit-keyframes glowr {
+    from {
+        box-shadow: 0 0 5px #fff, 0 0 20px #e60411, 0 0 30px #e60411, 0 0 40px #e60073;
+    }
+    to {
+        box-shadow: 0 0 5px #fff, 0 0 20px #e60411, 0 0 30px #e60411, 0 0 40px #e60073;
+    }
+}
+
+@-webkit-keyframes glowb {
+    from {
+        box-shadow: 0 0 5px #fff, 0 0 20px #1075e6, 0 0 30px #1075e6, 0 0 40px #1075e6;
+    }
+    to {
+        box-shadow: 0 0 5px #fff, 0 0 20px #1075e6, 0 0 30px #1075e6, 0 0 40px #1075e6;
+    }
+}
+
+/*residents buttons*/
+.residents-btn {
+    background-color: black;
+    color: yellow;
+}
