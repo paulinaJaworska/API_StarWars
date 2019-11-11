@@ -1,8 +1,16 @@
-import {displayNavbar} from "./navbar.js";
+
+import {displayNavigationBar} from "./navbar.js";
+import {addPlanetStatListener, controlVoteButtons} from "./vote.js";
 
 
 function main() {
-    displayNavbar();
+    //localStorage.clear();
+    displayNavigationBar();
+    addPlanetStatListener();
+    controlVoteButtons()
+
 }
+
+
 
 main();

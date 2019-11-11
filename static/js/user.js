@@ -1,19 +1,164 @@
-import {postData} from "./requests.js";
-import {displayNavbar} from "./navbar.js";
+/*
+function showVerificationResult () {
+fetch('/registration')
+    .then(function(response) {
+        let state = response['state'];
+        if ( state === 'empty') {
+            // flash please fill the fields
+        } else if (state === 'in_db') {
+            // user already exists
+        } else if (state === 'not_equal') {
+            // Incorrect password
+        } else if (state === 'success') {
+            // user logged in (display in navbar)
+        }
+    })
+}
 
-export {registration}
+fetch('/registration')
+    .then(function (response) {
+        return response.text()
+    });
+.then (function(text))
 
+// JSON wat
+let person = {'name':'Andrew', 'loves': 'opensorce'}; // object
+let asJSON = JSON.stringify(person); // string,   in Python json.dumps()
+
+// reversed str - > object
+let asObject = JSON.parse(asJSON); // object again in python json.loads()
+
+//////////////////////////////////////////////////////////////////////////
+//AJAX WAY
+// GET is default method so we dont have to set it
+fetch('/hello')
+    .then(function(response) {
+    return response.text()
+}) .then (function(text) {
+    console.log('GET respose text:');
+    console.log(text);
+}) .catch (err => {
+    console.error('fetch failed', err)
+});
+// Send dome request
+fetch('/hello')
+    .then (function (response) {
+        return response.json(); // Parse it as JSON
+    })
+    .then (function(json) {
+        console.log('GET response as JSON');
+        console.log(json);   //JSON object
+    });
+
+// SEND JSON TO PYTHON WITH POST
+fetch('/hello', {
+    method: 'POST',
+    body : JSON.stringify ( { // A JSON PAYload
+        'greeting': "Hello from browser"
+    }) .then (function (response) { // Flask has just printed our JSON
+        return response.text()
+    }) .then (function(text) {
+        console.log('Post response');
+        console.log(text);
+    })
+})
+
+fetch(url) // Call the fetch function passing the url of the API as a parameter
+    .then(function() {
+        // Your code for handling the data you get from the API
+    })
+    .catch(function() {
+        // This is where you run code if the server returns any errors
+    });
+
+*/
+
+import {displaySuccessMessage, displayErrorMessage, openModal, closeModal, clearModal} from "./dom_handler.js";
+import {//addCellsWithVoteButtons, removeCellsWithVoteButtons,
+        enableVoting, disableVoting} from "./vote.js";
+import {setNavBarForLogged, setNavBarForNotLogged} from "./navbar.js";
+import {postDataModern, getDataModern} from "./api_ajax.js";
+
+export {logOut, logIn, registration}
+
+
+
+//---------------------------------------------------------------------------------------------------------
 let user = {
-    loginFail: document.getElementById('errorAlert'),
-    loginSuccess: document.getElementById('successAlert'),
+loginFail: document.getElementById('errorAlert'),
+loginSuccess: document.getElementById('successAlert'),
 
-    registerFail: document.getElementById('registrationError'),
-    registerSuccess: document.getElementById('registrationSuccess'),
+registerFail: document.getElementById('registrationError'),
+registerSuccess: document.getElementById('registrationSuccess'),
 
-    loginForm: document.getElementById('login-form'),
-    registrationForm: document.getElementById('register-form'),
+loginForm: document.getElementById('login-form'),
+registrationForm: document.getElementById('register-form'),
 };
 
+// ------log out----------
+
+function logOut(event) {
+    event.preventDefault();
+    getDataModern('POST', '/logout', logOutResponseHandler)
+}
+
+function logOutResponseHandler(response) {
+    let username = localStorage.getItem('username');
+    if (response['state'] === 'success') {
+        openModal(username, `See you later ${username} :)`);
+        localStorage.clear();
+        setNavBarForNotLogged();
+        //
+        disableVoting();
+        //removeCellsWithVoteButtons();
+    } else {
+        openModal(username, `You did not logout ${username}. Try again`);
+    }
+}
+
+// ------ log in ---------
+
+function logIn(event) {
+    event.preventDefault();
+    prepareLoginForm()
+}
+
+function prepareLoginForm() {
+    let form = user.loginForm;
+    clearModal('loginModal');
+    form.addEventListener('submit', verifyUserLogIn)
+}
+
+function verifyUserLogIn(event) {
+    event.preventDefault();
+    let loginData = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+    };
+
+    if (loginData.username && loginData.password) {
+        postDataModern('/login', loginData, logInResponseHandler.bind(null, loginData.username))
+    } else {
+        displayErrorMessage(user.loginFail, user.loginSuccess, "Fill out the empty fields")
+    }
+}
+
+function logInResponseHandler(username, response) {
+    if (response['state'] === 'success') {
+        localStorage.setItem('username', username);
+        displaySuccessMessage(user.loginFail, user.loginSuccess, `Welcome ${username}`);
+        setNavBarForLogged(username);
+        //
+        enableVoting();
+        //addCellsWithVoteButtons();
+        closeModal('loginModal')
+
+    } else {
+        displayErrorMessage(user.loginFail, user.loginSuccess, 'Wrong username or password!')
+    }
+}
+
+// ----------- registration -----------
 
 function registration(event) {
     event.preventDefault();
@@ -35,7 +180,7 @@ function verifyUserRegistration(event) {
     };
 
     if (registrationData.username && registrationData.password && registrationData.confirmPassword) {
-        postData('/registration', registrationData, registrationResponseHandler.bind(null, registrationData.username))
+        postDataModern('/registration', registrationData, registrationResponseHandler.bind(null, registrationData.username))
     } else {
         displayErrorMessage(user.registerFail, user.registerSuccess, "Fill out the empty fields")
     }
@@ -45,9 +190,9 @@ function registrationResponseHandler(username, response) {
     if (response['state'] === 'success') {
         localStorage.setItem('username', username);
         displaySuccessMessage(user.registerFail, user.registerSuccess, `Welcome ${username}`);
+        setNavBarForLogged(username);
         //
-        displayNavbar(username);
-        //setNavBarForLogged(username);
+        enableVoting();
         //addCellsWithVoteButtons();
         closeModal('registerModal')
 
@@ -59,54 +204,3 @@ function registrationResponseHandler(username, response) {
         displayErrorMessage(user.registerFail, user.registerSuccess, 'Passwords must be equals')
     }
 }
-
-
-
-// display messages about success/loginFail (login/registration)
-function displayErrorMessage(fail, success, message) {
-
-   fail.style.display = 'block';
-   fail.textContent = message;
-
-   success.style.display = 'none';
-
-}
-
-function displaySuccessMessage(fail, success, message) {
-
-   success.style.display = 'block';
-   success.textContent = message;
-
-   fail.style.display = 'none';
-}
-
-
-/*}
-
-function clearModal(modalId) {
-    let modal
-}*/
-
-
-/*
-function closeModal(modalId) {
-     setTimeout(function () {
-         $(`#${modalId}`).modal('hide')
-     }, 2000);
- }
-
-function clearModal(modalId) {
-    $(`#${modalId}`).on('hide.bs.modal', function () {
-        let modal = document.getElementById(modalId);
-        let alerts = modal.querySelectorAll('.alert');
-        let inputs = modal.querySelectorAll('input');
-
-        for(let alert of alerts){
-            alert.style.display = 'none';
-            alert.textContent = '';
-        }
-        for(let input of inputs){
-            input.value = '';
-        }
-    });
-}*/
