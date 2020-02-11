@@ -8,7 +8,7 @@ The data is provided through API from [swapi.co](https://www.swapi.co)
 * Flask
 * Bootstrap
 * HTML + CSS
-* AJAX requests (fetch)
+* Fetch requests
 * PostgreSQL
 * JavaScript DOM
 
