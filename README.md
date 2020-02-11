@@ -1,13 +1,14 @@
 # API Wars
 
 Web application which shows data about the Star Wars Universe, store visitors preferences with cookies and handle user login with sessions.
+The data is provided through API from [swapi.co](https://www.swapi.co)
 
 ## Used technologies
 
 * Flask
 * Bootstrap
 * HTML + CSS
-* AJAX request (fetch)
+* AJAX requests (fetch)
 * PostgreSQL
 * JavaScript DOM
 
