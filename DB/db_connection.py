@@ -4,10 +4,10 @@ import psycopg2.extras
 
 
 def get_connection_string():
-    user_name = 'paulina' #os.environ.get('USER_NAME')
-    password = 'codecool' #os.environ.get('PASSWORD')
-    host = 'localhost' #os.environ.get('HOST')
-    database_name = 'api_wars'#os.environ.get('DB_NAME')
+    user_name = os.environ.get('USER_NAME')
+    password = os.environ.get('PASSWORD')
+    host = os.environ.get('HOST')
+    database_name = os.environ.get('DB_NAME')
 
     env_variables_defined = user_name and password and host and database_name
 
@@ -22,9 +22,7 @@ def get_connection_string():
         raise KeyError('Some necessary environment variable(s) are not defined')
 
 
-# noinspection PyUnresolvedReferences
 def open_database():
-    # noinspection PyUnresolvedReferences
     try:
         connection_string = get_connection_string()
         connection = psycopg2.connect(connection_string)
@@ -37,7 +35,6 @@ def open_database():
 
 def connection_handler(function):
     def wrapper(*args, **kwargs):
-        # noinspection PyUnresolvedReferences
         try:
             connection = open_database()
             dict_cur = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
